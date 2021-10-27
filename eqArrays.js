@@ -7,15 +7,8 @@ const assertEqual = function(actual, expected) {
 };
 
 const eqArrays = function(arrayOne, arrayTwo) {
-  if (arrayOne === arrayTwo) {
-    return true;
-  } 
 
   if (arrayOne.length !== arrayTwo.length) {
-    return false;
-  }
-
-  if (arrayOne == null || arrayTwo == null) {
     return false;
   }
 
