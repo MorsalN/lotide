@@ -1,20 +1,35 @@
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const tail = require('../tail');
 
-//TEST CODE
-// Test Case: Check the original array
-const words = ["Yo Yo", "Lighthouse", "Labs"];
-tail(words); // no need to capture the return value since we are not checking it
-assertEqual(words.length, 3); // original array should still have 3 elements!
+describe("#head", () => { 
 
-// Test Case 1: Check the returned array elements
-const result = tail(["Hello", "Lighthouse", "Labs"]);
-assertEqual(result.length, 2); // ensure we get back two elements
-assertEqual(result[0], "Lighthouse"); // ensure first element is "Lighthouse"
-assertEqual(result[1], "Labs"); // ensure second element is "Labs"
+  it("Check the original array: original array should still have 3 elements!", () => {
+    const words = ["Yo Yo", "Lighthouse", "Labs"];
+    assert.strictEqual((words.length), 3);
+  });
 
-// Test Case 2: Check single element
-const test = tail(["Labs"]);
-assertEqual(test.length, 2); // ensure we get back two elements
-assertEqual(test[0], "Lighthouse"); // ensure first element is "Lighthouse"
-assertEqual(test[1], "Labs"); // ensure second element is "Labs"
+  it("Check the returned array elements: ensure first element is Lighthouse", () => {
+    const result = tail(["Hello", "Lighthouse", "Labs"]);
+    assert.strictEqual((result[0]), 'Lighthouse');
+  });
+
+  it("Check the returned array elements: ensure second element is Labs", () => {
+    const result = tail(["Hello", "Lighthouse", "Labs"]);
+    assert.strictEqual((result[1]), 'Labs');
+  });
+
+  it("Check single element: ensure single element length returns 0", () => {
+    const test = tail(["Labs"]);
+    assert.strictEqual(test.length, 0);
+  });
+
+  it("Check single element: ensure first element is undefined", () => {
+    const test = tail(["Labs"]);
+    assert.strictEqual(test[0], undefined);
+  });
+
+  it("Check single element: ensure second element is undefined", () => {
+    const test = tail(["Labs"]);
+    assert.strictEqual(test[1], undefined);
+  });
+});
